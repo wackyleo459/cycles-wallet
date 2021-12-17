@@ -68,7 +68,7 @@ export async function getAgentPrincipal(): Promise<Principal> {
   }
 }
 
-async function getWalletCanister(): Promise<ActorSubclass<_SERVICE>> {
+export async function getWalletCanister(): Promise<ActorSubclass<_SERVICE>> {
   if (walletCanisterCache) {
     return walletCanisterCache;
   }

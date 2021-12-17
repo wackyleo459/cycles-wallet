@@ -24,6 +24,7 @@ import type { Event } from "../../canister/wallet/wallet";
 import Canisters from "../panels/Canisters";
 import { PrimaryButton } from "../Buttons";
 import Events from "../panels/Transactions";
+import Controllers from "../panels/Controllers";
 
 const drawerWidth = 240;
 
@@ -225,6 +226,13 @@ export function Dashboard(props: { open: boolean; onOpenToggle: () => void }) {
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={classes.paper}>
                 <BalanceChart />
+              </Paper>
+            </Grid>
+
+            {/* Controllers */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                {<Controllers></Controllers>}
               </Paper>
             </Grid>
 

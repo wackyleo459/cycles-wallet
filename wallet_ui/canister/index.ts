@@ -16,13 +16,13 @@
 import {
   HttpAgent,
   Actor,
-  Principal,
   ActorSubclass,
   AnonymousIdentity,
 } from "@dfinity/agent";
 import _SERVICE from "./wallet/wallet";
 import factory, { Event } from "./wallet";
 import { authClient } from "../utils/authClient";
+import { Principal } from "@dfinity/principal";
 export * from "./wallet";
 
 function convertIdlEventMap(idlEvent: any): Event {
@@ -33,7 +33,7 @@ function convertIdlEventMap(idlEvent: any): Event {
   };
 }
 // Need to export the enumeration from wallet.did
-export { Principal } from "@dfinity/agent";
+export { Principal } from "@dfinity/principal";
 
 function getCanisterId(): Principal {
   // Check the query params.
@@ -223,7 +223,7 @@ export const Wallet = {
       throw result.Err;
     }
   },
-  async send(p: { canister: Principal; amount: BigInt }): Promise<void> {
+  async send(p: { canister: Principal; amount: bigint }): Promise<void> {
     await (await getWalletCanister()).wallet_send({
       canister: p.canister,
       amount: BigInt(p.amount),

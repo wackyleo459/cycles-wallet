@@ -1,21 +1,10 @@
 import React, {useState, useEffect} from "react";
-import { Principal } from "@dfinity/agent";
+import { Principal } from "@dfinity/principal";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { Avatar, IconButton, Typography, Button} from "@material-ui/core";
+import {Typography, Button} from "@material-ui/core";
 import { Stack, Tooltip } from "@mui/material";
-import { Skeleton } from '@material-ui/lab';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import AddIcon from "@material-ui/icons/Add";
-import DeleteIcon from '@material-ui/icons/DeleteOutline';
-import { EventList } from "../routes/Dashboard";
-import "../../css/Events.scss";
-import { CreateCanisterDialog } from "./CreateCanister";
-import { CreateWalletDialog } from "./CreateWallet";
-import { CreateDialog } from "./CreateDialog";
-import PlusIcon from "../icons/PlusIcon";
-import { css } from "@emotion/css";
-import { getWalletCanister, Wallet } from "../../canister";
-import { ProxyMessageGetPrincipal } from "@dfinity/agent";
+import { EventList } from "../routes/Dashboard";;
 
 const useStyles = makeStyles({
   button: {

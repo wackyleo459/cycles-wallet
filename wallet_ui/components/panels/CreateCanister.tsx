@@ -63,7 +63,7 @@ export function CreateCanisterDialog(props: {
   open: boolean;
   close: (err?: any) => void;
 }) {
-  const { open, close } = props;
+  const { open, close} = props;
 
   const [loading, setLoading] = React.useState(false);
   const [controller, setController] = React.useState(getWalletId().toString());

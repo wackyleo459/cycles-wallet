@@ -84,6 +84,8 @@ async function getWalletCanister(): Promise<ActorSubclass<_SERVICE>> {
   const agent = new HttpAgent({
     identity,
   });
+  agent.fetchRootKey();
+
   if (!walletId) {
     throw new Error("Need to have a wallet ID.");
   } else {

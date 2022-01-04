@@ -31,7 +31,7 @@ function Canisters(props: Props) {
   function handleWalletCreateDialogOpen() {
     setWalletCreateDialogOpen(true);
   }
-  const { canisters } = props;
+  const { canisters} = props;
 
   return (
     <Grid className="canisters">

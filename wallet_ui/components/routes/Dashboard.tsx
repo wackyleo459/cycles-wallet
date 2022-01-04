@@ -111,31 +111,35 @@ export function Dashboard(props: { open: boolean; onOpenToggle: () => void }) {
 
   const [events, setEvents] = useState<EventList>();
 
-  React.useEffect(() => {
+  function updateEvents() {
     Wallet.events()
-      .then((events) => {
-        return events
-          .sort((a, b) => {
-            // Reverse sort on timestamp.
-            return Number(b.timestamp) - Number(a.timestamp);
-          })
-          .reduce((start, next) => {
-            const [kindField] = Object.entries(next.kind);
-            const [key, body] = Object.entries(kindField);
-            if (
-              "CanisterCreated" in next.kind ||
-              "WalletCreated" in next.kind
-            ) {
-              start.canisters.push(next);
-            } else {
-              start.transactions.push(next);
-            }
+    .then((events) => {
+      return events
+        .sort((a, b) => {
+          // Reverse sort on timestamp.
+          return Number(b.timestamp) - Number(a.timestamp);
+        })
+        .reduce((start, next) => {
+          const [kindField] = Object.entries(next.kind);
+          const [key, body] = Object.entries(kindField);
+          if (
+            "CanisterCreated" in next.kind ||
+            "WalletCreated" in next.kind
+          ) {
+            start.canisters.push(next);
+          } else {
+            start.transactions.push(next);
+          }
 
-            return start;
-          }, reduceStart);
-      })
-      .then(setEvents);
-  }, []);
+          return start;
+        }, reduceStart);
+    })
+    .then(setEvents);
+  }
+
+  React.useEffect(() => {
+   updateEvents();
+  });
 
   const reduceStart: EventList = {
     canisters: [],
@@ -231,7 +235,7 @@ export function Dashboard(props: { open: boolean; onOpenToggle: () => void }) {
             {/* Canisters */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                {<Canisters canisters={events?.canisters} />}
+                {<Canisters canisters={events?.canisters}/>}
               </Paper>
             </Grid>
 

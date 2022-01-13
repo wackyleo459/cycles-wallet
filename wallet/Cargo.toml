@@ -1,12 +1,8 @@
 [package]
 name = "wallet"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["DFINITY Stiftung <sdk@dfinity.org>"]
 edition = "2018"
-
-[profile.release]
-lto = true
-opt-level = 'z'
 
 [lib]
 crate-type = ["cdylib"]
@@ -24,6 +20,7 @@ serde = "1.0.116"
 serde_cbor = "0.11"
 serde_bytes = "0.11"
 serde_with = "1.6.2"
+indexmap = "1.7.0"
 
 [build-dependencies]
 sha2 = "0.9.1"

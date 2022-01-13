@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Managed canisters are now tracked, and the events that pertain to them are tracked under them.
+  - Added `list_managed_canisters`, `get_managed_canister_events`, and `set_short_name` functions.
+
+### Changed
+
+- `wallet_receive` now takes an optional memo parameter, for recording information about a particular transaction.
+
+## [0.2.1] - 2021-12-03
+
+### Changed
+
+- When `wallet_create_wallet` is not given any controllers to use, now it will
+  set the caller as a controller in addition to itself (previously only set self).
+
 ## [0.2.0] - 2021-09-03
 
 ### Added
